@@ -5,7 +5,7 @@ const server = http.createServer(function (req, res) {
 
     if (req.url === "/time") {
         res.end(`
-            <html>
+            <html lang="ru">
                 <body>
                     <h1 id="time">Loading time...</h1>
                     <script>     
