@@ -22,8 +22,14 @@ const server = http.createServer(function (req, res) {
                 </body>
             </html>
         `);
-    } else {
+    } else if (req.url.startsWith("/hello?name=")) {
+        let name = req.url.split('=')[1];
+        name = !name ? "User" : name;
+        res.end(`<h1>Hello ${name}!</h1>` +
+            '<a href="/time">Time</a>');
 
+
+    } else {
         res.end('<h1>Добро пожаловать!</h1>' +
             '<a href="/time">Time</a>');
     }
@@ -32,4 +38,5 @@ const server = http.createServer(function (req, res) {
 server.listen(9000, () => {
     console.log(`Server is running at http://localhost:9000/`);
     console.log(`Server Time is running at http://localhost:9000/time`);
+    console.log(`Server Hello is running at http://localhost:9000/hello?name=Name`);
 });
